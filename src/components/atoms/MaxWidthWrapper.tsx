@@ -5,6 +5,8 @@ const MaxWidthWrapper = ({
     children,
     className,
 }: PropsWithChildren & PropsWithClassname) => {
-    return <div className={cn(className, 'max-w-[1200px] m-auto')}>{children}</div>;
+    return (
+        <div className={cn(className, 'max-w-[1232px] m-auto px-4')}>{children}</div>
+    );
 };
 export default MaxWidthWrapper;

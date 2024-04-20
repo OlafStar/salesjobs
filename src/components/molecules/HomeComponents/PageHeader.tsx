@@ -1,8 +1,9 @@
+import {PropsWithChildren} from 'react';
 import {Input} from '~/components/ui/input';
 
-const PageHeader = () => {
+const PageHeader = ({children}: PropsWithChildren) => {
     return (
-        <div className="w-full bg-[#f1f1f1]">
+        <div className="w-full bg-slate-100">
             <div className="max-w-[596px] py-16 m-auto flex flex-col justify-center items-center gap-6">
                 <div className="text-6xl font-bold">{'SALEJOBS'}</div>
                 <div className="text-2xl text-center">
@@ -18,6 +19,7 @@ const PageHeader = () => {
                     <div>{'Loop'}</div>
                 </div>
             </div>
+            {children}
         </div>
     );
 };
