@@ -2,6 +2,9 @@ import {Advertisement} from '~/types/advertisements';
 import {Badge} from '~/components/ui/badge';
 import {daysFromToday} from '~/lib/utils';
 
+import CompanyIcon from '../../../../public/icons/company-icon.svg';
+import LocationIcon from '../../../../public/icons/location-icon.svg';
+
 const OfferListCard = ({
   title,
   salary,
@@ -15,9 +18,15 @@ const OfferListCard = ({
       <div className="flex flex-1 justify-between">
         <div className="flex flex-col justify-between">
           <div className="text-lg font-medium">{title}</div>
-          <div className="flex">
-            <div className="text-sm">{company.name}</div>
-            <div className="text-sm">{`${location.city}, ${location.country}`}</div>
+          <div className="flex gap-5">
+            <div className="flex gap-2 items-center">
+              <CompanyIcon />
+              <div className="text-sm">{company.name}</div>
+            </div>
+            <div className="flex gap-2 items-center">
+              <LocationIcon />
+              <div className="text-sm">{`${location.city}, ${location.country}`}</div>
+            </div>
           </div>
         </div>
         <div className="flex flex-col w-fit justify-between">
