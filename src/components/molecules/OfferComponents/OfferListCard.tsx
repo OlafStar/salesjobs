@@ -1,3 +1,5 @@
+import {BriefcaseBusinessIcon} from 'lucide-react';
+
 import {Advertisement} from '~/types/advertisements';
 import {Badge} from '~/components/ui/badge';
 import {daysFromToday} from '~/lib/utils';
@@ -14,7 +16,9 @@ const OfferListCard = ({
 }: Advertisement) => {
   return (
     <div className="flex gap-3 py-6">
-      <div className="w-[88px] h-[59px] bg-slate-500" />
+      <div className="w-[88px] h-[59px] flex items-center justify-center">
+        <BriefcaseBusinessIcon color={'#d1d1d1'} size={42} />
+      </div>
       <div className="flex flex-1 justify-between">
         <div className="flex flex-col justify-between">
           <div className="text-lg font-medium">{title}</div>
