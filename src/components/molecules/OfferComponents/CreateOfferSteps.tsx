@@ -1,3 +1,5 @@
+import {CheckIcon} from 'lucide-react';
+
 import {cn} from '~/lib/utils';
 
 type CreateOfferStepsProps = {
@@ -25,7 +27,11 @@ const CreateOfferSteps = ({activeStep}: CreateOfferStepsProps) => {
               'w-[24px] h-[24px] flex items-center justify-center',
             )}
           >
-            <div className="font-medium">{'1'}</div>
+            {activeStep > 1 ? (
+              <CheckIcon color="white" size={16} />
+            ) : (
+              <div className="font-medium">{'1'}</div>
+            )}
           </div>
           <div className="font-medium">{'Create'}</div>
         </div>
@@ -37,7 +43,11 @@ const CreateOfferSteps = ({activeStep}: CreateOfferStepsProps) => {
               'w-[24px] h-[24px] flex items-center justify-center',
             )}
           >
-            <div className="font-medium">{'2'}</div>
+            {activeStep > 2 ? (
+              <CheckIcon color="white" size={16} />
+            ) : (
+              <div className="font-medium">{'2'}</div>
+            )}
           </div>
           <div className="font-medium">{'Preview'}</div>
         </div>
