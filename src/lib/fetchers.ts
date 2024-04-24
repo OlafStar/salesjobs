@@ -1,6 +1,7 @@
 'use server';
 
 import {
+  Advertisement,
   GetAdvertisementApiResponse,
   GetAdvertisementCounterApiResponse,
 } from '~/types/advertisements';
@@ -19,8 +20,24 @@ export async function fetchAdvertisementsCouneter(): Promise<{total: number}> {
   return data;
 }
 
-export const fetchAdvertisements = async (page: number) => {
-  const response = await fetch(`${apiUrl}/advertisements?page=${page}&limit=10`, {
+export const fetchAdvertisements = async (page: number, limit?: number) => {
+  const response = await fetch(
+    `${apiUrl}/advertisements?page=${page}&limit=${limit ? limit : 10}`,
+    {
+      method: 'GET',
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  const data: GetAdvertisementApiResponse = await response.json();
+  return data;
+};
+
+export const fetchAdvertisement = async (id: string) => {
+  const response = await fetch(`${apiUrl}/advertisement/${id}`, {
     method: 'GET',
   });
 
@@ -28,6 +45,6 @@ export const fetchAdvertisements = async (page: number) => {
     throw new Error('Network response was not ok');
   }
 
-  const data: GetAdvertisementApiResponse = await response.json();
+  const data: Advertisement = await response.json();
   return data;
 };

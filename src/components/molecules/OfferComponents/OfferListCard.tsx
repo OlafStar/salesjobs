@@ -1,6 +1,10 @@
-import {BriefcaseBusinessIcon} from 'lucide-react';
+'use client';
 
-import {Advertisement} from '~/types/advertisements';
+import {BriefcaseBusinessIcon} from 'lucide-react';
+import Link from 'next/link';
+import {useMemo} from 'react';
+
+import {AdvertisementCard} from '~/types/advertisements';
 import {Badge} from '~/components/ui/badge';
 import {daysFromToday} from '~/lib/utils';
 
@@ -8,14 +12,19 @@ import CompanyIcon from '../../../../public/icons/company-icon.svg';
 import LocationIcon from '../../../../public/icons/location-icon.svg';
 
 const OfferListCard = ({
+  id,
   title,
   salary,
   company,
   location,
   createdAt,
-}: Advertisement) => {
+}: AdvertisementCard) => {
+  const days = useMemo(() => {
+    return daysFromToday(createdAt);
+  }, [createdAt]);
+
   return (
-    <div className="flex gap-3 py-6">
+    <Link href={`/offer/${id}`} className={'flex gap-3 py-6'}>
       <div className="w-[88px] h-[59px] flex items-center justify-center">
         <BriefcaseBusinessIcon color={'#d1d1d1'} size={42} />
       </div>
@@ -39,14 +48,16 @@ const OfferListCard = ({
           )}
           <div className="flex justify-end">
             <Badge variant="secondary" className="font-medium text-xs">
-              {daysFromToday(createdAt) === 0
+              {days === 0
                 ? 'New'
-                : `${daysFromToday(createdAt)} days ago`}
+                : days === 1
+                  ? `${days} day ago`
+                  : `${days} days ago`}
             </Badge>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -31,6 +31,24 @@ export type Advertisement = {
   createdAt: string;
 };
 
+export type AdvertisementCard = {
+  id: string;
+  title: string;
+  salary?: Salary[];
+  company: {
+    name: string;
+    size: number;
+    website: string;
+    logo: string;
+  };
+  location: {
+    country: string;
+    city: string;
+    address: string;
+  };
+  createdAt: string;
+};
+
 type Salary = {
   employmentType: string;
   minSalary: number;
@@ -42,10 +60,9 @@ export type GetAdvertisementCounterApiResponse = {
   total: number;
 };
 
-
 export type GetAdvertisementApiResponse = {
   currentPage: number;
   total: number;
   last: number;
-  advertisements: Advertisement[];
+  advertisements: AdvertisementCard[];
 };

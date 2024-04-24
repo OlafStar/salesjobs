@@ -22,6 +22,7 @@ const config = {
     extend: {
       minHeight: {
         'screen-minus-64': 'calc(100vh - 64px)',
+        'screen-minus-88': 'calc(100vh - 88px)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],

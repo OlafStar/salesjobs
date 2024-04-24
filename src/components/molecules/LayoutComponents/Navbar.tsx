@@ -5,7 +5,7 @@ import {Button} from '~/components/ui/button';
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 w-full bg-white z-50 shadow-sm">
+    <nav className="fixed top-0 w-full bg-white z-[50] shadow-sm">
       <MaxWidthWrapper className="flex justify-between  items-center py-3">
         <Link href={'/'} className="text-2xl font-bold">
           {'SALEJOBS'}

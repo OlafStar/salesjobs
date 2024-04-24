@@ -1,5 +1,6 @@
 import AllOffersText from '~/components/atoms/AllOffersText';
 import MaxWidthWrapper from '~/components/atoms/MaxWidthWrapper';
+import LatestOffersList from '~/components/molecules/HomeComponents/LatestOffersList';
 import OfferList from '~/components/molecules/HomeComponents/OfferList';
 import PageHeader from '~/components/molecules/HomeComponents/PageHeader';
 import {Tabs, TabsContent, TabsList, TabsTrigger} from '~/components/ui/tabs';
@@ -39,7 +40,9 @@ const HomePage = () => {
           <TabsContent value="all">
             <OfferList />
           </TabsContent>
-          <TabsContent value="latest">{'Change your password here.'}</TabsContent>
+          <TabsContent value="latest">
+            <LatestOffersList />
+          </TabsContent>
         </MaxWidthWrapper>
       </Tabs>
     </div>

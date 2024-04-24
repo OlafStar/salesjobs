@@ -1,6 +1,6 @@
 'use client';
 
-import {useAdvertisementsCounter} from '~/hooks/useAdvertismentsCounter';
+import {useAdvertisementsCounter} from '~/hooks/useAdvertisementsCounter';
 
 const AllOffersText = () => {
   const {data} = useAdvertisementsCounter();

@@ -2,16 +2,15 @@
 
 import React, {useState, useEffect, useRef, Fragment} from 'react';
 
-import {useAdvertisements} from '~/hooks/useAdvertisements';
+import {useLatestAdvertisements} from '~/hooks/useAdvertisements';
 import {AdvertisementCard} from '~/types/advertisements';
 
 import OfferListCard from '../../OfferComponents/OfferListCard';
 import OfferListEmptyState from '../OfferListEmptyState';
 
-const OfferList = () => {
-  const [page, setPage] = useState(1);
+const LatestOffersList = () => {
   const [allData, setAllData] = useState<AdvertisementCard[]>([]);
-  const {isPending, data, isFetching} = useAdvertisements(page);
+  const {isPending, data, isFetching} = useLatestAdvertisements();
   const loader = useRef(null);
 
   useEffect(() => {
@@ -19,29 +18,6 @@ const OfferList = () => {
       setAllData((prev) => [...prev, ...data.advertisements]);
     }
   }, [data, isFetching]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (
-        entries[0].isIntersecting &&
-        data &&
-        !isFetching &&
-        data.currentPage < data.last
-      ) {
-        setPage((old) => old + 1);
-      }
-    });
-
-    if (loader.current) {
-      observer.observe(loader.current);
-    }
-
-    return () => {
-      if (loader.current) {
-        observer.unobserve(loader.current);
-      }
-    };
-  }, [loader.current, isFetching, data]);
 
   return (
     <div>
@@ -66,4 +42,4 @@ const OfferList = () => {
   );
 };
 
-export default OfferList;
+export default LatestOffersList;

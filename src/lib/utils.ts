@@ -1,15 +1,15 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import {type ClassValue, clsx} from 'clsx';
+import {twMerge} from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export function daysFromToday(dateString: string): number {
   const targetDate = new Date(dateString);
 
   if (isNaN(targetDate.getTime())) {
-    throw new Error("Invalid date format");
+    throw new Error('Invalid date format');
   }
 
   const today = new Date();
@@ -17,8 +17,11 @@ export function daysFromToday(dateString: string): number {
 
   const difference = targetDate.getTime() - today.getTime();
 
-  const days = Math.round(difference / (1000 * 60 * 60 * 24));
+  let days = Math.round(difference / (1000 * 60 * 60 * 24));
+
+  if (days < 0) {
+    days = days * -1;
+  }
 
   return days;
 }
-
