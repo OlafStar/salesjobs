@@ -24,11 +24,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '~/components/ui/select';
-import {Textarea} from '~/components/ui/textarea';
 import {RadioGroup, RadioGroupItem} from '~/components/ui/radio-group';
 import {Label} from '~/components/ui/label';
 import {useCreateOfferContext} from '~/components/providers/CreateOfferProvider';
 import {createOfferMockData} from '~/mocks/createOffer';
+import Tiptap from '~/components/atoms/TipTap';
 
 import FormFieldArray from '../FormFieldArray';
 import CreateOfferUpload from '../UploadFields/CreateOfferUpload';
@@ -237,12 +237,12 @@ const CreateJobPostingForm = () => {
               defaultValue={''}
               render={({field, fieldState: {error}}) => (
                 <FormItem className="flex-1">
-                  <FormLabel>{'Job description'}</FormLabel>
                   <FormControl>
-                    <Textarea
+                    <Tiptap content="test" onChange={field.onChange} />
+                    {/* <Textarea
                       placeholder="Write your description here..."
                       {...field}
-                    />
+                    /> */}
                   </FormControl>
                   <FormMessage>{error?.message}</FormMessage>
                 </FormItem>
